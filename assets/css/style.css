@@ -714,13 +714,6 @@ a.card{display:block;color:inherit}
 .accent-lime .shape-hex,.accent-lime .shape-sq{background:var(--c-jsdc-lime)}
 .accent-red  .shape-hex,.accent-red  .shape-sq{background:var(--c-jsdc-red)}
 
-/* 3 つの図形は素の高さが違う（ring 64px／hex 55.4px／sq 55px）ので、
-   そのまま並べると次に来る見出しの高さがカードごとにズレる。
-   下端を 64px にそろえて、h3 の開始位置を 3 枚とも同じにする。 */
-.org-card .shape{--s:64px}
-.org-card .shape-hex{margin-bottom:9px}
-.org-card .shape-sq{margin-bottom:9px}
-
 /* 關於 JSDC：logo を大きく置いた中央寄せブロック */
 .about-block{max-width:720px;margin:0 auto;text-align:center;display:flex;
   flex-direction:column;align-items:center}

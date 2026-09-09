@@ -28,7 +28,6 @@
 var NAV = [
   { text: '關於',       href: '#about' },
   { text: '共同舉辦',   href: '#mopcon' },
-  { text: '協辦社群',   href: '#organizers' },
   { text: '主辦團隊',   href: '#hosts' },
   { text: '贊助',       href: '#sponsors' },
   { text: 'JSDC', children: [
