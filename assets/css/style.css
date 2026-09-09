@@ -722,7 +722,21 @@ a.card{display:block;color:inherit}
 .about-block h2{font-size:clamp(26px,3.6vw,38px);margin:0 0 .4em}
 .about-lead{margin:0 0 28px}
 
-/* 共同舉辦夥伴：MOPCON 本家へ送り出すだけのブロック */
+/* 2026 主軸：告知文の本文と、トピックのチップ列 */
+.why-block{max-width:760px;margin:0 auto;text-align:center}
+.why-block p{color:var(--c-ink-70);font-size:17px;margin:0 0 1em}
+.topic-row{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;
+  justify-content:center;gap:10px 12px}
+.topic-row .tag{font-size:14px;padding:6px 14px}
+/* チップは JSDC logo の 3 色を順に回す。薄い地に濃い点、文字は本文色のまま。 */
+.topic-cyan{background:var(--c-teal-tint)}
+.topic-cyan .tag-dot{background:var(--c-teal)}
+.topic-lime{background:var(--c-lime-tint)}
+.topic-lime .tag-dot{background:var(--c-jsdc-lime)}
+.topic-red{background:#fbe9e5}
+.topic-red .tag-dot{background:var(--c-jsdc-red)}
+
+/* 聯合主辦：MOPCON 本家へ送り出すだけのブロック */
 .partner-block{max-width:640px;margin:0 auto;text-align:center}
 .partner-lockup{margin:0 auto 22px;padding:22px clamp(24px,4vw,40px)}
 .partner-lockup .lk-mopcon{height:clamp(34px,5vw,54px)}  /* ≥160px 幅を確保 */

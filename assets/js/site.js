@@ -27,7 +27,8 @@
    桌機寬度不夠時，右邊的項目會自動收進「更多 ▾」，不用改 CSS。 */
 var NAV = [
   { text: '關於',       href: '#about' },
-  { text: '共同舉辦',   href: '#mopcon' },
+  { text: '2026 主軸',  href: '#why' },
+  { text: '聯合主辦',   href: '#mopcon' },
   { text: '主辦團隊',   href: '#hosts' },
   { text: '贊助',       href: '#sponsors' },
   { text: 'JSDC', children: [
