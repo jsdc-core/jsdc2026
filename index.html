@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSDC 2026｜MOPCONxJSDC 共同舉辦</title>
+<meta name="description" content="JSDC 2026 JavaScript 開發者年會。MOPCONxJSDC 共同舉辦，2026.10.31（六）。">
+<!-- canonical は自分のドメイン。GitHub Pages の Custom domain 設定（2026.jsdc.tw）と
+     ルートの CNAME ファイルに合わせてある。ドメインを変えるときは
+     CNAME / canonical / og:url / og:image / JSON-LD の url をまとめて変える。 -->
+<link rel="canonical" href="https://2026.jsdc.tw/">
+<link rel="icon" href="assets/img/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<!-- SNS プレビュー。FB／LINE／Slack／X のクローラは JS を一切実行しないので、
+     ここは必ず静的 HTML のままにする（JS 生成に変えない）。 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JSDC 2026">
+<meta property="og:title" content="JSDC 2026｜MOPCONxJSDC 共同舉辦">
+<meta property="og:description" content="JSDC 2026 JavaScript 開發者年會。MOPCONxJSDC 共同舉辦，2026.10.31（六）。">
+<meta property="og:url" content="https://2026.jsdc.tw/">
+<meta property="og:image" content="https://2026.jsdc.tw/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- 検索エンジン向けの構造化データ（schema.org Event）。
+     共同舉辦なので organizer は JSDC と MOPCON の 2 件。
+     ※ JSON なので文字列中に半角ダブルクォートを入れないこと。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "JSDC 2026",
+  "description": "JSDC 2026 JavaScript 開發者年會。MOPCONxJSDC 共同舉辦。",
+  "url": "https://2026.jsdc.tw/",
+  "image": "https://2026.jsdc.tw/assets/img/og.png",
+  "startDate": "2026-10-31",
+  "endDate": "2026-10-31",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "inLanguage": "zh-Hant-TW",
+  "organizer": [
+    { "@type": "Organization", "name": "JSDC", "url": "https://jsdc.tw/", "email": "hq@jsdc.tw" },
+    { "@type": "Organization", "name": "MOPCON", "url": "https://mopcon.org/" }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+
+<!-- ==========================================================================
+     導航列：外枠だけ。項目は assets/js/site.js 冒頭の NAV 配列から生成する。
+     ブランド部分は共同舉辦の lockup（JSDC 方形標 ＋ × ＋ MOPCON 橫式標）。
+     ========================================================================== -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-in">
+    <a class="brand" href="index.html" aria-label="JSDC 2026 首頁，MOPCONxJSDC 共同舉辦">
+      <img class="brand-jsdc" src="assets/img/jsdc-logo.png" alt="JSDC.TW" width="250" height="250">
+      <span class="brand-x" aria-hidden="true">×</span>
+      <img class="brand-mopcon" src="assets/img/mopcon-logo-inline-ink.svg" alt="MOPCON" width="408" height="75">
+    </a>
+    <nav class="nav" id="mainNav" aria-label="主選單">
+      <ul class="nav-list" id="navList"></ul>
+    </nav>
+    <!-- 降級選單：わざと <noscript> にしていない。site.js が壊れたときも
+         リンクが残るようにするため。site.js が動けば自分で隠す。 -->
+    <ul class="ns-nav">
+      <li><a href="#about">關於</a></li>
+      <li><a href="#mopcon">共同舉辦</a></li>
+      <li><a href="#hosts">主辦團隊</a></li>
+      <li><a href="#sponsors">贊助</a></li>
+    </ul>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="開啟選單">
+      <span class="burger-i" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer-top">
+    <img class="brand-jsdc" src="assets/img/jsdc-logo.png" alt="JSDC.TW" width="250" height="250">
+    <button class="drawer-close" id="drawerClose" type="button" aria-label="關閉選單"></button>
+  </div>
+  <nav class="drawer-body" id="drawerNav" aria-label="主選單"></nav>
+</div>
+
+<main id="main">
+
+  <!-- ======================= Hero =======================
+       ページ全体で「共同」と書くのはこの 1 行だけ：MOPCONxJSDC 共同舉辦。
+       それ以外は全部 JSDC 側の内容。 -->
+  <div class="hero-shell">
+  <section class="hero">
+    <svg class="hero-art" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <path class="arc-teal" d="M1300 -40 C1180 220 1560 520 1360 860 L1700 860 L1700 -40 Z"/>
+      <path class="arc-mint" d="M1080 -40 C900 200 1380 420 1120 840 L1300 840 C1560 420 1080 200 1260 -40 Z"/>
+      <path class="arc-mint" d="M-60 520 C180 470 260 700 220 900 L340 900 C380 700 300 470 60 520 Z"/>
+    </svg>
+    <span class="hero-scrim" aria-hidden="true"></span>
+    <img class="hero-motif is-dna" src="assets/img/motif-dna-white.svg" alt="" aria-hidden="true" width="200" height="640">
+    <img class="hero-motif is-hex" src="assets/img/motif-hex-white.svg" alt="" aria-hidden="true" width="420" height="360">
+
+    <div class="wrap hero-in">
+      <!-- JSDC.TW の PNG は白背景で透過していないので、必ず白いカード（.lockup）に載せる。
+           青い hero に直接置くと白い四角が出る。 -->
+      <div class="lockup hero-lockup">
+        <img class="lk-jsdc" src="assets/img/jsdc-logo.png" alt="JSDC.TW" width="250" height="250">
+        <span class="lk-x" aria-hidden="true">×</span>
+        <img class="lk-mopcon" src="assets/img/mopcon-logo-inline-ink.svg" alt="MOPCON" width="408" height="75">
+      </div>
+      <p class="joint-badge">JSDC 2026</p>
+      <h1><span class="hero-tag">MOPCONxJSDC 共同舉辦</span></h1>
+      <p class="hero-sub">JavaScript 開發者年會</p>
+      <p class="hero-meta">
+        <span class="date">2026.10.31（六）</span>
+      </p>
+    </div>
+  </section>
+  </div><!-- /.hero-shell -->
+
+  <!-- ======================= 關於 JSDC =======================
+       .jsdc-rule は JSDC logo の 3 色（青／萊姆綠／磚紅）をそのまま並べた区切り。
+       ページ全体でこの 3 色を繰り返し使って、logo と配色を揃えている。 -->
+  <section class="band band-white arc-bot-r arc-rim" id="about" aria-labelledby="about-t">
+    <img class="motif motif-dna-r" src="assets/img/motif-dna-brand.svg" alt="" aria-hidden="true" width="200" height="640">
+    <div class="wrap">
+      <div class="about-block">
+        <img class="about-mark" src="assets/img/jsdc-logo.png" alt="JSDC.TW" width="250" height="250">
+        <span class="jsdc-rule" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="eyebrow">ABOUT</span>
+        <h2 id="about-t">關於 JSDC</h2>
+        <p class="lead about-lead">JSDC 是台灣的 JavaScript 開發者年會，由社群自主籌辦。</p>
+        <div class="btn-row is-center">
+          <a class="btn btn-teal" href="https://jsdc.tw" target="_blank" rel="noopener">官方網站</a>
+          <a class="btn btn-line" href="https://www.facebook.com/JSDC.TW/" target="_blank" rel="noopener">Facebook</a>
+          <a class="btn btn-line" href="https://x.com/jsdc_tw" target="_blank" rel="noopener">X</a>
+          <a class="btn btn-line" href="https://github.com/jsdc-core" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 共同舉辦夥伴 MOPCON =======================
+       MOPCON 側の詳細（日程の詳細・會場・議程）は本家に置いてあるので、
+       ここは logo と本家へのリンクだけ。MOPCON の内容をこちらに複製しない。 -->
+  <section class="band band-soft arc-bot arc-rim" id="mopcon" aria-labelledby="mo-t">
+    <img class="motif motif-hex-l" src="assets/img/motif-hex-brand.svg" alt="" aria-hidden="true" width="420" height="360">
+    <div class="wrap">
+      <div class="sec-head is-center">
+        <span class="eyebrow">PARTNER</span>
+        <h2 id="mo-t">共同舉辦夥伴</h2>
+        <span class="jsdc-rule is-center" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+      <div class="partner-block">
+        <!-- MOPCON 橫式 logo は白い面に置く。最小サイズ（幅 160px）を下回らないこと。 -->
+        <div class="lockup partner-lockup">
+          <img class="lk-mopcon" src="assets/img/mopcon-logo-inline-ink.svg" alt="MOPCON" width="408" height="75">
+        </div>
+        <p class="lead">MOPCONxJSDC 共同舉辦。MOPCON 的議程與大會資訊請見官方網站。</p>
+        <div class="btn-row is-center">
+          <a class="btn btn-teal" href="https://mopcon.org/2026/" target="_blank" rel="noopener">前往 MOPCON 2026 官網 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 協辦社群 =======================
+       内容は src/components/Footer.js の Organizers リストと同じ。
+       3 枚のカードに JSDC logo の 3 色を 1 色ずつ当てている。 -->
+  <section class="band band-white arc-bot-l" id="organizers" aria-labelledby="org-t">
+    <img class="motif motif-hex-l" src="assets/img/motif-hex-brand.svg" alt="" aria-hidden="true" width="420" height="360">
+    <div class="wrap">
+      <div class="sec-head is-center">
+        <span class="eyebrow">ORGANIZERS</span>
+        <h2 id="org-t">協辦社群</h2>
+        <span class="jsdc-rule is-center" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+      <div class="grid grid-3">
+        <a class="card org-card accent-cyan" href="https://exma-square.co" target="_blank" rel="noopener">
+          <span class="shape shape-ring" aria-hidden="true"></span>
+          <h3>皇漢科技 EXMA-Square</h3>
+          <p>exma-square.co ↗</p>
+        </a>
+        <a class="card org-card accent-lime" href="https://www.facebook.com/dscareer/?locale=zh_TW" target="_blank" rel="noopener">
+          <span class="shape shape-hex" aria-hidden="true"></span>
+          <h3>資料科學家的工作日常</h3>
+          <p>Facebook ↗</p>
+        </a>
+        <a class="card org-card accent-red" href="https://hackmd.io/8KIFgcOWRbq5bvdiEHqlLw" target="_blank" rel="noopener">
+          <span class="shape shape-sq" aria-hidden="true"></span>
+          <h3>Tech Book Community</h3>
+          <p>HackMD ↗</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 主辦團隊 =======================
+       内容は src/components/HostSection.js の speakers 配列と同じ。 -->
+  <section class="band band-soft arc-bot arc-rim" id="hosts" aria-labelledby="ho-t">
+    <div class="wrap">
+      <div class="sec-head is-center">
+        <span class="eyebrow">HOST</span>
+        <h2 id="ho-t">Host Members</h2>
+        <span class="jsdc-rule is-center" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+      <ul class="host-grid">
+        <li class="card host-card accent-cyan">
+          <div class="ph ph-round"><img src="assets/img/host/cropped_image_1.jpg" alt="Lois" loading="lazy" width="120" height="120"></div>
+          <h3>Lois</h3>
+          <p>Web Developer, React Developer, JavaScript Developer</p>
+        </li>
+        <li class="card host-card accent-lime">
+          <div class="ph ph-round"><img src="assets/img/host/cropped_image_2.jpg" alt="張維元" loading="lazy" width="120" height="120"></div>
+          <h3>張維元</h3>
+          <p>JavaScript Developer, Mathematics, Data Science, Machine Learning</p>
+        </li>
+        <li class="card host-card accent-red">
+          <div class="ph ph-round"><img src="assets/img/host/cropped_image_3.jpg" alt="Caesar" loading="lazy" width="120" height="120"></div>
+          <h3>Caesar</h3>
+          <p>JavaScript Developer, Node.js Developer, JavaScript Developer</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================= 贊助 ======================= -->
+  <section class="band band-ink on-teal arc-bot-r" id="sponsors" aria-labelledby="spo-t">
+    <img class="motif motif-hex-l" src="assets/img/motif-hex-white.svg" alt="" aria-hidden="true" width="420" height="360">
+    <div class="wrap">
+      <div class="sec-head is-center">
+        <span class="eyebrow">SPONSORS</span>
+        <h2 id="spo-t">Call for Sponsors</h2>
+        <p class="lead">JSDC 是不以營利為目的的社群年會，每一年的舉辦都仰賴贊助夥伴的支持。</p>
+      </div>
+      <div class="btn-row is-center">
+        <a class="btn btn-amber" href="mailto:hq@jsdc.tw">成為贊助夥伴</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 共同舉辦 ======================= -->
+  <section class="band band-teal on-teal cta-band arc-bot joint-band" aria-labelledby="cta-t">
+    <div class="wrap">
+      <div class="lockup">
+        <img class="lk-jsdc" src="assets/img/jsdc-logo.png" alt="JSDC.TW" width="250" height="250">
+        <span class="lk-x" aria-hidden="true">×</span>
+        <img class="lk-mopcon" src="assets/img/mopcon-logo-inline-ink.svg" alt="MOPCON" width="408" height="75">
+      </div>
+      <p class="joint-line" id="cta-t">MOPCONxJSDC 共同舉辦</p>
+      <p class="joint-meta"><span>2026.10.31（六）</span></p>
+      <p>議程、講者與報名資訊即將公布，敬請期待。</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================= 頁尾（src/components/Footer.js の内容） ======= -->
+<footer class="site-footer">
+  <img class="motif motif-dna-r" src="assets/img/motif-dna-white.svg" alt="" aria-hidden="true" width="200" height="640">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup foot-lockup">
+          <img class="lk-jsdc" src="assets/img/jsdc-logo.png" alt="JSDC.TW" width="250" height="250">
+          <span class="lk-x" aria-hidden="true">×</span>
+          <img class="lk-mopcon" src="assets/img/mopcon-logo-inline-ink.svg" alt="MOPCON" width="408" height="75">
+        </div>
+        <p>MOPCONxJSDC 共同舉辦</p>
+      </div>
+      <nav class="foot-col" aria-labelledby="foot-about-t">
+        <h2 id="foot-about-t">About</h2>
+        <ul>
+          <li><a href="https://jsdc.tw" target="_blank" rel="noopener">JSDC.TW</a></li>
+          <li><a href="https://www.facebook.com/JSDC.TW/" target="_blank" rel="noopener">JSDC Facebook</a></li>
+          <li><a href="https://x.com/jsdc_tw" target="_blank" rel="noopener">JSDC Twitter</a></li>
+          <li><a href="https://mopcon.org/2026/" target="_blank" rel="noopener">MOPCON 2026</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-labelledby="foot-org-t">
+        <h2 id="foot-org-t">Organizers</h2>
+        <ul>
+          <li><a href="https://exma-square.co" target="_blank" rel="noopener">皇漢科技 EXMA-Square</a></li>
+          <li><a href="https://www.facebook.com/dscareer/?locale=zh_TW" target="_blank" rel="noopener">資料科學家的工作日常</a></li>
+          <li><a href="https://hackmd.io/8KIFgcOWRbq5bvdiEHqlLw" target="_blank" rel="noopener">Tech Book Community</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-labelledby="foot-help-t">
+        <h2 id="foot-help-t">Help</h2>
+        <ul>
+          <li><a href="mailto:hq@jsdc.tw">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-bottom foot-legal">
+      <p>© 2026 JSDC.TW　All rights reserved.</p>
+      <p>This event follows our Code of Conduct and is committed to providing a harassment-free conference experience for everyone.</p>
+      <p>Content licensed under CC BY-NC-SA 4.0 unless otherwise noted.</p>
+      <p>本活動遵循我們的行為準則，致力於為所有參與者提供無騷擾的會議體驗。除非另有說明，內容採用 CC BY-NC-SA 4.0 授權。</p>
+    </div>
+  </div>
+</footer>
+
+<!-- このページには議程／講者／贊助のデータが無いので data.js は読み込まない。
+     site.js 側のデータ描画関数は全部 typeof ガード付きなので、無くても落ちない。
+     site.js が担当するのは導航列と漢堡選單だけ。 -->
+<script src="assets/js/site.js"></script>
+</body>
+</html>
